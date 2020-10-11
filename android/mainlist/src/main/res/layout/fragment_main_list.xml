@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F5F5F5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        layout="@layout/include_toolbar"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Last visit date: Sept 20, 2020"
+        />
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/swipe_refresh"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp">
+
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxy_recycler"
+        android:layout_marginTop="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="visible"
+        tools:listitem="@layout/item_artist"
+        >
+
+    </com.airbnb.epoxy.EpoxyRecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_title_default"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/empty_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_message_default"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/empty_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/img_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/empty_description"
+        app:layout_constraintTop_toBottomOf="@+id/empty_title"
+        android:src="@drawable/ic_refresh_black_24dp"
+        />
+
+    <View
+        android:id="@+id/view_refresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/pb_user_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gp_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="empty_title,empty_description,img_refresh, view_refresh"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
